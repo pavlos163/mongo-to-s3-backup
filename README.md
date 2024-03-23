@@ -1,6 +1,6 @@
 # Mongo -> S3 Backup
 
-This is a very simple script to take a MongoDB database dump into S3 (or any other S3-based storage such as Cloudlfare).
+This is a very simple script to take a MongoDB database dump into S3 (or any other S3-based storage such as Cloudflare).
 
 ## Building the Docker image
 ```
