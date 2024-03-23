@@ -1,6 +1,6 @@
 #!/bin/bash
-OBJECT_NAME=$(date '+%Y-%m-%d')
+OBJECT_NAME=mongodump.$(date '+%d-%m-%Y').prod
 
 # Dump and stream directly to S3
 mongodump --uri="$MONGO_URI" --archive --gzip | \
-aws s3 cp - s3://"$BUCKET_NAME"/"$OBJECT_NAME" --endpoint-url "$CLOUDFLARE_ENDPOINT"
+aws s3 cp - s3://"$BUCKET_NAME"/"$OBJECT_NAME" --endpoint-url "$S3_ENDPOINT"
