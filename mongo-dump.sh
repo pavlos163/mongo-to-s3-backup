@@ -1,5 +1,5 @@
 #!/bin/bash
-OBJECT_NAME=mongodump.$(date '+%d-%m-%Y').prod
+OBJECT_NAME=mongodump.$(date '+%d-%m-%Y').prod.gz
 
 # Dump and stream directly to S3
 mongodump --uri="$MONGO_URI" --archive --gzip | \
