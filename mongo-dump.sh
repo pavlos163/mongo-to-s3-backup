@@ -1,5 +1,9 @@
 #!/bin/bash
-OBJECT_NAME=mongodump.$(date '+%d-%m-%Y').prod.gz
+if [[ -z "${OBJECT_NAME}" ]]; then
+    OBJECT_NAME=mongodump.$(date -u '+%d-%m-%Y_%H:%M:%S').prod.gz
+else
+    echo "Using exported OBJECT_NAME: $OBJECT_NAME"
+fi
 
 # Dump and stream directly to S3
 mongodump --uri="$MONGO_URI" --archive --gzip | \
