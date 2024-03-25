@@ -9,4 +9,9 @@ fi
 
 # Dump and stream directly to S3
 mongodump --uri="$MONGO_URI" --archive --gzip | \
+aws s3 cp - s3://"$BUCKET_NAME"/"$OBJECT_NAME" --endpoint-url "$S3_ENDPOINT" || {
+   echo "Error occurred during mongodump or S3 upload"
+   exit 1
+}
+mongodump --uri="$MONGO_URI" --archive --gzip | \
 aws s3 cp - s3://"$BUCKET_NAME"/"$OBJECT_NAME" --endpoint-url "$S3_ENDPOINT"
