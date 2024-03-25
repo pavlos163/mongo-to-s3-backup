@@ -1,6 +1,7 @@
 #!/bin/bash
 if [[ -z "${OBJECT_NAME}" ]]; then
     # Add UTC date and time details
+    echo "OBJECT_NAME is empty. Setting it to current UTC date and time."
     OBJECT_NAME=mongodump.$(date -u '+%d-%m-%Y_%H:%M:%S').prod.gz
 else
     echo "Using exported OBJECT_NAME: $OBJECT_NAME"
