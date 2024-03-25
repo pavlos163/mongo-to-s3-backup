@@ -1,5 +1,6 @@
 #!/bin/bash
-OBJECT_NAME=mongodump.$(date '+%d-%m-%Y').prod.gz
+# Add UTC date and time details
+OBJECT_NAME=mongodump.$(date -u '+%d-%m-%Y_%H:%M:%S').prod.gz
 
 # Dump and stream directly to S3
 mongodump --uri="$MONGO_URI" --archive --gzip | \
